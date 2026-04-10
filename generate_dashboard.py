@@ -376,13 +376,13 @@ const equityData = {equity_js};
 function drawChart() {{
     const canvas = document.getElementById('equityChart');
     if (!canvas || equityData.length === 0) return;
-    if (equityData.length === 1) {{{{
+    if (equityData.length === 1) {{
         const ctx = canvas.getContext("2d");
         const rect = canvas.parentElement.getBoundingClientRect();
         canvas.width = rect.width - 40;
         canvas.height = 260;
         const w = canvas.width, h = canvas.height;
-        const pad = {{{{ top: 20, right: 20, bottom: 30, left: 65 }}}};
+        const pad = {{ top: 20, right: 20, bottom: 30, left: 65 }};
         const midY = h / 2;
         ctx.setLineDash([4, 4]);
         ctx.strokeStyle = "#555577"; ctx.lineWidth = 1;
@@ -398,7 +398,7 @@ function drawChart() {{
         ctx.fillStyle = "#666688";
         ctx.fillText("Chart appears after 2+ scans", w / 2, h - 8);
         return;
-    }}}}
+    }}
     const ctx = canvas.getContext('2d');
     const rect = canvas.parentElement.getBoundingClientRect();
     canvas.width = rect.width - 40;
