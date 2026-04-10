@@ -375,7 +375,30 @@ const equityData = {equity_js};
 
 function drawChart() {{
     const canvas = document.getElementById('equityChart');
-    if (!canvas || equityData.length < 2) return;
+    if (!canvas || equityData.length === 0) return;
+    if (equityData.length === 1) {{{{
+        const ctx = canvas.getContext("2d");
+        const rect = canvas.parentElement.getBoundingClientRect();
+        canvas.width = rect.width - 40;
+        canvas.height = 260;
+        const w = canvas.width, h = canvas.height;
+        const pad = {{{{ top: 20, right: 20, bottom: 30, left: 65 }}}};
+        const midY = h / 2;
+        ctx.setLineDash([4, 4]);
+        ctx.strokeStyle = "#555577"; ctx.lineWidth = 1;
+        ctx.beginPath(); ctx.moveTo(pad.left, midY); ctx.lineTo(w - pad.right, midY); ctx.stroke();
+        ctx.setLineDash([]); ctx.fillStyle = "#555577"; ctx.textAlign = "left";
+        ctx.font = "11px SF Mono, Menlo, monospace";
+        ctx.fillText("$100k start", pad.left + 4, midY - 6);
+        const dotX = w / 2, dotY = midY - 10;
+        ctx.beginPath(); ctx.arc(dotX, dotY, 6, 0, Math.PI * 2);
+        ctx.fillStyle = "#3b82f6"; ctx.fill();
+        ctx.fillStyle = "#e2e8f0"; ctx.textAlign = "center";
+        ctx.fillText("$" + (equityData[0].value/1000).toFixed(1) + "k", dotX, dotY - 14);
+        ctx.fillStyle = "#666688";
+        ctx.fillText("Chart appears after 2+ scans", w / 2, h - 8);
+        return;
+    }}}}
     const ctx = canvas.getContext('2d');
     const rect = canvas.parentElement.getBoundingClientRect();
     canvas.width = rect.width - 40;
