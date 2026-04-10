@@ -38,6 +38,7 @@ jobs:
           git config user.email "scanner@bot.local"
           git add portfolio.json trades.csv scan_log.csv dashboard.html alerts.csv
           git diff --cached --quiet || git commit -m "Daily scan $(date +%Y-%m-%d)"
+          git pull --rebase origin main
           git push
 
   deploy:
