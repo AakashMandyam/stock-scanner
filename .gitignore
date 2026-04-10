@@ -1,0 +1,7 @@
+__pycache__/
+*.pyc
+logs/
+*.plist
+backtest_equity.csv
+backtest_trades.csv
+.DS_Store

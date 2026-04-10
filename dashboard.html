@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MACD Scanner Dashboard</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+    background: #0a0a14;
+    color: #c8c8e0;
+    font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', sans-serif;
+    padding: 0;
+    min-height: 100vh;
+}
+.header {
+    background: linear-gradient(135deg, #12122a 0%, #1a1a3a 100%);
+    padding: 28px 36px;
+    border-bottom: 1px solid #2a2a4a;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.header h1 { font-size: 22px; font-weight: 700; color: #e0e0ff; }
+.header .sub { color: #5555aa; font-size: 13px; margin-top: 4px; }
+.header .return-badge {
+    font-size: 36px;
+    font-weight: 800;
+    font-family: 'SF Mono', 'Menlo', monospace;
+    color: #22c55e;
+}
+.header .return-label { font-size: 11px; color: #6666aa; text-transform: uppercase; letter-spacing: 1px; text-align: right; }
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+    gap: 12px;
+    padding: 20px 36px;
+}
+.stat-card {
+    background: #12122a;
+    border: 1px solid #2a2a4a;
+    border-radius: 10px;
+    padding: 16px 20px;
+}
+.stat-card .label { font-size: 11px; color: #5555aa; text-transform: uppercase; letter-spacing: 0.8px; }
+.stat-card .value { font-size: 24px; font-weight: 700; margin-top: 4px; font-family: 'SF Mono', 'Menlo', monospace; }
+.stat-card .detail { font-size: 11px; color: #444466; margin-top: 2px; }
+
+.section {
+    padding: 20px 36px;
+}
+.section h2 {
+    font-size: 16px;
+    font-weight: 600;
+    color: #8888bb;
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.section h2 .dot {
+    width: 8px; height: 8px; border-radius: 50%;
+    display: inline-block;
+}
+.dot.green { background: #22c55e; box-shadow: 0 0 6px #22c55e88; }
+.dot.blue { background: #3b82f6; box-shadow: 0 0 6px #3b82f688; }
+.dot.amber { background: #f59e0b; box-shadow: 0 0 6px #f59e0b88; }
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #12122a;
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid #2a2a4a;
+}
+thead th {
+    text-align: left;
+    padding: 12px 16px;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    color: #5555aa;
+    background: #0f0f22;
+    border-bottom: 1px solid #2a2a4a;
+}
+tbody td {
+    padding: 10px 16px;
+    font-size: 13px;
+    border-bottom: 1px solid #1a1a30;
+    font-family: 'SF Mono', 'Menlo', monospace;
+}
+tbody tr:hover { background: #1a1a35; }
+.ticker {
+    background: #2a2a5a;
+    color: #a0a0ff;
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-weight: 600;
+    font-size: 12px;
+}
+.pos { color: #22c55e; font-weight: 600; }
+.neg { color: #ef4444; font-weight: 600; }
+.reason-badge {
+    background: #1a1a35;
+    color: #6666aa;
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-size: 11px;
+}
+
+.chart-container {
+    background: #12122a;
+    border: 1px solid #2a2a4a;
+    border-radius: 10px;
+    padding: 20px;
+    height: 300px;
+    position: relative;
+}
+canvas { width: 100% !important; height: 260px !important; }
+
+.status-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 36px;
+    background: #0f0f20;
+    border-top: 1px solid #2a2a4a;
+    font-size: 12px;
+    color: #444466;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+.status-bar .live { color: #22c55e; }
+
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+@media (max-width: 900px) { .two-col { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+
+<div class="header">
+    <div>
+        <h1>MACD Multi-Timeframe Scanner</h1>
+        <div class="sub">Nasdaq 100 &middot; Paper Trading &middot; Daily/Weekly MACD + 200 SMA + Relative Strength</div>
+    </div>
+    <div>
+        <div class="return-label">Total Return</div>
+        <div class="return-badge">+0.0%</div>
+    </div>
+</div>
+
+<div class="stats-grid">
+    <div class="stat-card">
+        <div class="label">Portfolio Value</div>
+        <div class="value" style="color:#e0e0ff">$100,000</div>
+        <div class="detail">started at $100,000</div>
+    </div>
+    <div class="stat-card">
+        <div class="label">Cash Available</div>
+        <div class="value" style="color:#3b82f6">$100,000</div>
+        <div class="detail">0 open positions</div>
+    </div>
+    <div class="stat-card">
+        <div class="label">Total Trades</div>
+        <div class="value" style="color:#8b5cf6">0</div>
+        <div class="detail">0W / 0L</div>
+    </div>
+    <div class="stat-card">
+        <div class="label">Win Rate</div>
+        <div class="value" style="color:#f59e0b">0.0%</div>
+        <div class="detail">profit factor: 0.00</div>
+    </div>
+    <div class="stat-card">
+        <div class="label">Total P&L</div>
+        <div class="value" style="color:#22c55e">$+0</div>
+        <div class="detail">realized trades only</div>
+    </div>
+    <div class="stat-card">
+        <div class="label">Avg Winner / Loser</div>
+        <div class="value" style="color:#06b6d4;font-size:18px">$+0 / $0</div>
+        <div class="detail">per trade</div>
+    </div>
+</div>
+
+<div class="section">
+    <h2><span class="dot blue"></span> Equity Curve</h2>
+    <div class="chart-container">
+        <canvas id="equityChart"></canvas>
+    </div>
+</div>
+
+<div class="section two-col">
+    <div>
+        <h2><span class="dot green"></span> Open Positions</h2>
+        <table>
+            <thead><tr>
+                <th>Ticker</th><th>Entry</th><th>Stop</th><th>Shares</th><th>Value</th><th>Held</th><th>Risk</th>
+            </tr></thead>
+            <tbody><tr><td colspan="7" style="text-align:center;color:#555577;padding:24px;">No open positions</td></tr></tbody>
+        </table>
+    </div>
+    <div>
+        <h2><span class="dot amber"></span> Recent Trades</h2>
+        <table>
+            <thead><tr>
+                <th>Ticker</th><th>Date</th><th>Price</th><th>Shares</th><th>P&L</th><th>Reason</th>
+            </tr></thead>
+            <tbody><tr><td colspan="6" style="text-align:center;color:#555577;padding:24px;">No trades yet</td></tr></tbody>
+        </table>
+    </div>
+</div>
+
+<div style="height:60px"></div>
+
+<div class="status-bar">
+    <span>Last scan: <span class="live">Never</span></span>
+    <span>Strategy: MACD(12,26,9) + 200SMA + RS | ATR Stop 2.5x | Max 8 positions | 1.2% risk/trade</span>
+    <span>Auto-refreshes with each scan</span>
+</div>
+
+<script>
+const equityData = [];
+
+function drawChart() {
+    const canvas = document.getElementById('equityChart');
+    if (!canvas || equityData.length < 2) return;
+    const ctx = canvas.getContext('2d');
+    const rect = canvas.parentElement.getBoundingClientRect();
+    canvas.width = rect.width - 40;
+    canvas.height = 260;
+
+    const w = canvas.width;
+    const h = canvas.height;
+    const pad = { top: 20, right: 20, bottom: 30, left: 65 };
+    const plotW = w - pad.left - pad.right;
+    const plotH = h - pad.top - pad.bottom;
+
+    const values = equityData.map(d => d.value);
+    const minV = Math.min(...values) * 0.95;
+    const maxV = Math.max(...values) * 1.05;
+
+    const xScale = (i) => pad.left + (i / (equityData.length - 1)) * plotW;
+    const yScale = (v) => pad.top + plotH - ((v - minV) / (maxV - minV)) * plotH;
+
+    // Grid
+    ctx.strokeStyle = '#1a1a35';
+    ctx.lineWidth = 1;
+    for (let i = 0; i <= 5; i++) {
+        const y = pad.top + (plotH / 5) * i;
+        ctx.beginPath();
+        ctx.moveTo(pad.left, y);
+        ctx.lineTo(w - pad.right, y);
+        ctx.stroke();
+
+        const val = maxV - (i / 5) * (maxV - minV);
+        ctx.fillStyle = '#444466';
+        ctx.font = '11px SF Mono, Menlo, monospace';
+        ctx.textAlign = 'right';
+        ctx.fillText('$' + (val/1000).toFixed(0) + 'k', pad.left - 8, y + 4);
+    }
+
+    // Date labels
+    ctx.fillStyle = '#444466';
+    ctx.font = '11px SF Mono, Menlo, monospace';
+    ctx.textAlign = 'center';
+    const step = Math.max(1, Math.floor(equityData.length / 6));
+    for (let i = 0; i < equityData.length; i += step) {
+        ctx.fillText(equityData[i].date.slice(0, 7), xScale(i), h - 5);
+    }
+
+    // Fill gradient
+    const gradient = ctx.createLinearGradient(0, pad.top, 0, h - pad.bottom);
+    gradient.addColorStop(0, 'rgba(59,130,246,0.25)');
+    gradient.addColorStop(1, 'rgba(59,130,246,0.02)');
+
+    ctx.beginPath();
+    ctx.moveTo(xScale(0), h - pad.bottom);
+    for (let i = 0; i < equityData.length; i++) {
+        ctx.lineTo(xScale(i), yScale(equityData[i].value));
+    }
+    ctx.lineTo(xScale(equityData.length - 1), h - pad.bottom);
+    ctx.closePath();
+    ctx.fillStyle = gradient;
+    ctx.fill();
+
+    // Line
+    ctx.beginPath();
+    ctx.moveTo(xScale(0), yScale(equityData[0].value));
+    for (let i = 1; i < equityData.length; i++) {
+        ctx.lineTo(xScale(i), yScale(equityData[i].value));
+    }
+    ctx.strokeStyle = '#3b82f6';
+    ctx.lineWidth = 2;
+    ctx.stroke();
+
+    // $100k baseline
+    const baseY = yScale(100000);
+    if (baseY > pad.top && baseY < h - pad.bottom) {
+        ctx.setLineDash([4, 4]);
+        ctx.strokeStyle = '#555577';
+        ctx.lineWidth = 1;
+        ctx.beginPath();
+        ctx.moveTo(pad.left, baseY);
+        ctx.lineTo(w - pad.right, baseY);
+        ctx.stroke();
+        ctx.setLineDash([]);
+        ctx.fillStyle = '#555577';
+        ctx.textAlign = 'left';
+        ctx.fillText('$100k start', pad.left + 4, baseY - 6);
+    }
+
+    // Current value dot
+    const lastI = equityData.length - 1;
+    const lastX = xScale(lastI);
+    const lastY = yScale(equityData[lastI].value);
+    ctx.beginPath();
+    ctx.arc(lastX, lastY, 5, 0, Math.PI * 2);
+    ctx.fillStyle = '#3b82f6';
+    ctx.fill();
+    ctx.strokeStyle = '#0a0a14';
+    ctx.lineWidth = 2;
+    ctx.stroke();
+}
+
+window.addEventListener('load', drawChart);
+window.addEventListener('resize', drawChart);
+</script>
+
+</body>
+</html>
