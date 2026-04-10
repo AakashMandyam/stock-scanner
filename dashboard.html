@@ -27,7 +27,7 @@ body {
     font-size: 36px;
     font-weight: 800;
     font-family: 'SF Mono', 'Menlo', monospace;
-    color: #22c55e;
+    color: #ef4444;
 }
 .header .return-label { font-size: 11px; color: #6666aa; text-transform: uppercase; letter-spacing: 1px; text-align: right; }
 
@@ -149,20 +149,20 @@ canvas { width: 100% !important; height: 260px !important; }
     </div>
     <div>
         <div class="return-label">Total Return</div>
-        <div class="return-badge">+0.0%</div>
+        <div class="return-badge">-0.1%</div>
     </div>
 </div>
 
 <div class="stats-grid">
     <div class="stat-card">
         <div class="label">Portfolio Value</div>
-        <div class="value" style="color:#e0e0ff">$100,000</div>
+        <div class="value" style="color:#e0e0ff">$99,930</div>
         <div class="detail">started at $100,000</div>
     </div>
     <div class="stat-card">
         <div class="label">Cash Available</div>
-        <div class="value" style="color:#3b82f6">$100,000</div>
-        <div class="detail">0 open positions</div>
+        <div class="value" style="color:#3b82f6">$30,368</div>
+        <div class="detail">5 open positions</div>
     </div>
     <div class="stat-card">
         <div class="label">Total Trades</div>
@@ -200,7 +200,52 @@ canvas { width: 100% !important; height: 260px !important; }
             <thead><tr>
                 <th>Ticker</th><th>Entry</th><th>Stop</th><th>Shares</th><th>Value</th><th>Held</th><th>Risk</th>
             </tr></thead>
-            <tbody><tr><td colspan="7" style="text-align:center;color:#555577;padding:24px;">No open positions</td></tr></tbody>
+            <tbody>
+        <tr>
+            <td><span class="ticker">MRNA</span></td>
+            <td>$51.28</td>
+            <td>$44.73</td>
+            <td>183</td>
+            <td>$9,384</td>
+            <td>0d</td>
+            <td class="neg">-12.8%</td>
+        </tr>
+        <tr>
+            <td><span class="ticker">AMAT</span></td>
+            <td>$397.81</td>
+            <td>$351.94</td>
+            <td>26</td>
+            <td>$10,343</td>
+            <td>0d</td>
+            <td class="neg">-11.5%</td>
+        </tr>
+        <tr>
+            <td><span class="ticker">BKR</span></td>
+            <td>$63.42</td>
+            <td>$58.37</td>
+            <td>237</td>
+            <td>$15,031</td>
+            <td>0d</td>
+            <td class="neg">-8.0%</td>
+        </tr>
+        <tr>
+            <td><span class="ticker">GFS</span></td>
+            <td>$48.70</td>
+            <td>$42.76</td>
+            <td>202</td>
+            <td>$9,837</td>
+            <td>0d</td>
+            <td class="neg">-12.2%</td>
+        </tr>
+        <tr>
+            <td><span class="ticker">EXC</span></td>
+            <td>$49.44</td>
+            <td>$47.19</td>
+            <td>505</td>
+            <td>$24,967</td>
+            <td>0d</td>
+            <td class="neg">-4.6%</td>
+        </tr></tbody>
         </table>
     </div>
     <div>
@@ -217,13 +262,13 @@ canvas { width: 100% !important; height: 260px !important; }
 <div style="height:60px"></div>
 
 <div class="status-bar">
-    <span>Last scan: <span class="live">Never</span></span>
+    <span>Last scan: <span class="live">2026-04-10T06:13:56.825575</span></span>
     <span>Strategy: MACD(12,26,9) + 200SMA + RS | ATR Stop 2.5x | Max 8 positions | 1.2% risk/trade</span>
     <span>Auto-refreshes with each scan</span>
 </div>
 
 <script>
-const equityData = [];
+const equityData = [{"date": "2026-04-10", "value": 99930.44}];
 
 function drawChart() {
     const canvas = document.getElementById('equityChart');
