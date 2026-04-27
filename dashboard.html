@@ -156,13 +156,13 @@ canvas { width: 100% !important; height: 260px !important; }
 <div class="stats-grid">
     <div class="stat-card">
         <div class="label">Portfolio Value</div>
-        <div class="value" style="color:#e0e0ff">$98,309</div>
+        <div class="value" style="color:#e0e0ff">$98,283</div>
         <div class="detail">started at $100,000</div>
     </div>
     <div class="stat-card">
         <div class="label">Cash Available</div>
-        <div class="value" style="color:#3b82f6">$41,946</div>
-        <div class="detail">5 open positions</div>
+        <div class="value" style="color:#3b82f6">$16,187</div>
+        <div class="detail">6 open positions</div>
     </div>
     <div class="stat-card">
         <div class="label">Total Trades</div>
@@ -207,35 +207,35 @@ canvas { width: 100% !important; height: 260px !important; }
             <td>$49.05</td>
             <td>183</td>
             <td>$9,384</td>
-            <td>14d</td>
+            <td>17d</td>
             <td class="neg">-4.4%</td>
         </tr>
         <tr>
             <td><span class="ticker">AMAT</span></td>
             <td>$397.81</td>
-            <td>$358.04</td>
+            <td>$371.17</td>
             <td>26</td>
             <td>$10,343</td>
-            <td>14d</td>
-            <td class="neg">-10.0%</td>
+            <td>17d</td>
+            <td class="neg">-6.7%</td>
         </tr>
         <tr>
             <td><span class="ticker">BKR</span></td>
             <td>$63.42</td>
-            <td>$59.44</td>
+            <td>$63.89</td>
             <td>237</td>
             <td>$15,031</td>
-            <td>14d</td>
-            <td class="neg">-6.3%</td>
+            <td>17d</td>
+            <td class="neg">--0.7%</td>
         </tr>
         <tr>
             <td><span class="ticker">GFS</span></td>
             <td>$48.70</td>
-            <td>$55.60</td>
+            <td>$55.85</td>
             <td>202</td>
             <td>$9,837</td>
-            <td>14d</td>
-            <td class="neg">--14.2%</td>
+            <td>17d</td>
+            <td class="neg">--14.7%</td>
         </tr>
         <tr>
             <td><span class="ticker">FANG</span></td>
@@ -243,8 +243,17 @@ canvas { width: 100% !important; height: 260px !important; }
             <td>$176.39</td>
             <td>62</td>
             <td>$11,768</td>
-            <td>2d</td>
+            <td>5d</td>
             <td class="neg">-7.1%</td>
+        </tr>
+        <tr>
+            <td><span class="ticker">AEP</span></td>
+            <td>$134.73</td>
+            <td>$128.60</td>
+            <td>191</td>
+            <td>$25,733</td>
+            <td>0d</td>
+            <td class="neg">-4.5%</td>
         </tr></tbody>
         </table>
     </div>
@@ -278,13 +287,13 @@ canvas { width: 100% !important; height: 260px !important; }
 <div style="height:60px"></div>
 
 <div class="status-bar">
-    <span>Last scan: <span class="live">2026-04-24T22:10:27.455695</span></span>
+    <span>Last scan: <span class="live">2026-04-27T22:26:42.777535</span></span>
     <span>Strategy: MACD(12,26,9) + 200SMA + RS | ATR Stop 2.5x | Max 8 positions | 1.2% risk/trade</span>
     <span>Auto-refreshes with each scan</span>
 </div>
 
 <script>
-const equityData = [{"date": "2026-04-10", "value": 99930.44}, {"date": "2026-04-10", "value": 99930.44}, {"date": "2026-04-10", "value": 99930.44}, {"date": "2026-04-10", "value": 99930.44}, {"date": "2026-04-13", "value": 99382.84}, {"date": "2026-04-14", "value": 98977.95}, {"date": "2026-04-15", "value": 99249.61}, {"date": "2026-04-16", "value": 98722.95}, {"date": "2026-04-17", "value": 99085.77}, {"date": "2026-04-20", "value": 99467.91}, {"date": "2026-04-21", "value": 100154.25}, {"date": "2026-04-22", "value": 100484.04}, {"date": "2026-04-23", "value": 101652.2}, {"date": "2026-04-24", "value": 101961.22}];
+const equityData = [{"date": "2026-04-10", "value": 99930.44}, {"date": "2026-04-10", "value": 99930.44}, {"date": "2026-04-10", "value": 99930.44}, {"date": "2026-04-10", "value": 99930.44}, {"date": "2026-04-13", "value": 99382.84}, {"date": "2026-04-14", "value": 98977.95}, {"date": "2026-04-15", "value": 99249.61}, {"date": "2026-04-16", "value": 98722.95}, {"date": "2026-04-17", "value": 99085.77}, {"date": "2026-04-20", "value": 99467.91}, {"date": "2026-04-21", "value": 100154.25}, {"date": "2026-04-22", "value": 100484.04}, {"date": "2026-04-23", "value": 101652.2}, {"date": "2026-04-24", "value": 101961.22}, {"date": "2026-04-27", "value": 102944.45}];
 
 function drawChart() {
     const canvas = document.getElementById('equityChart');
