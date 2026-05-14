@@ -17,3 +17,4 @@ date,ticker,action,price,shares,pnl,reason
 2026-05-08,NVDA,BUY,211.5,67,0,entry_signal
 2026-05-11,AEP,SELL,130.16000366210938,191,-872.8684844970703,stop_loss
 2026-05-12,KLAC,BUY,1845.18994140625,5,0,entry_signal
+2026-05-14,FANG,BUY,201.10000610351562,78,0,entry_signal
