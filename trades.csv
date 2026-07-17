@@ -61,3 +61,4 @@ date,ticker,action,price,shares,pnl,reason
 2026-07-15,ARM,SELL,281.1700134277344,13,-607.0997619628906,weekly_ema_break
 2026-07-16,AMAT,BUY,579.4299926757812,7,0,entry_signal
 2026-07-16,KLAC,BUY,224.5,19,0,entry_signal
+2026-07-17,NXPI,SELL,270.6600036621094,28,-556.64013671875,weekly_ema_break
