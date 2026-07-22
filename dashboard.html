@@ -149,39 +149,39 @@ canvas { width: 100% !important; height: 260px !important; }
     </div>
     <div>
         <div class="return-label">Total Return</div>
-        <div class="return-badge">-12.1%</div>
+        <div class="return-badge">-11.3%</div>
     </div>
 </div>
 
 <div class="stats-grid">
     <div class="stat-card">
         <div class="label">Portfolio Value</div>
-        <div class="value" style="color:#e0e0ff">$87,866</div>
+        <div class="value" style="color:#e0e0ff">$88,664</div>
         <div class="detail">started at $100,000</div>
     </div>
     <div class="stat-card">
         <div class="label">Cash Available</div>
-        <div class="value" style="color:#3b82f6">$50,197</div>
-        <div class="detail">4 open positions</div>
+        <div class="value" style="color:#3b82f6">$74,071</div>
+        <div class="detail">3 open positions</div>
     </div>
     <div class="stat-card">
         <div class="label">Total Trades</div>
-        <div class="value" style="color:#8b5cf6">31</div>
-        <div class="detail">10W / 21L</div>
+        <div class="value" style="color:#8b5cf6">32</div>
+        <div class="detail">11W / 21L</div>
     </div>
     <div class="stat-card">
         <div class="label">Win Rate</div>
-        <div class="value" style="color:#f59e0b">32.3%</div>
-        <div class="detail">profit factor: 0.53</div>
+        <div class="value" style="color:#f59e0b">34.4%</div>
+        <div class="detail">profit factor: 0.56</div>
     </div>
     <div class="stat-card">
         <div class="label">Total P&L</div>
-        <div class="value" style="color:#ef4444">$-11,391</div>
+        <div class="value" style="color:#ef4444">$-10,569</div>
         <div class="detail">realized trades only</div>
     </div>
     <div class="stat-card">
         <div class="label">Avg Winner / Loser</div>
-        <div class="value" style="color:#06b6d4;font-size:18px">$+1,259 / $-1,142</div>
+        <div class="value" style="color:#06b6d4;font-size:18px">$+1,220 / $-1,142</div>
         <div class="detail">per trade</div>
     </div>
 </div>
@@ -202,21 +202,12 @@ canvas { width: 100% !important; height: 260px !important; }
             </tr></thead>
             <tbody>
         <tr>
-            <td><span class="ticker">MNST</span></td>
-            <td>$91.21</td>
-            <td>$95.42</td>
-            <td>253</td>
-            <td>$23,076</td>
-            <td>40d</td>
-            <td class="neg">--4.6%</td>
-        </tr>
-        <tr>
             <td><span class="ticker">AMD</span></td>
             <td>$551.63</td>
             <td>$489.29</td>
             <td>12</td>
             <td>$6,620</td>
-            <td>28d</td>
+            <td>29d</td>
             <td class="neg">-11.3%</td>
         </tr>
         <tr>
@@ -225,7 +216,7 @@ canvas { width: 100% !important; height: 260px !important; }
             <td>$737.65</td>
             <td>4</td>
             <td>$3,917</td>
-            <td>8d</td>
+            <td>9d</td>
             <td class="neg">-24.7%</td>
         </tr>
         <tr>
@@ -234,7 +225,7 @@ canvas { width: 100% !important; height: 260px !important; }
             <td>$441.95</td>
             <td>7</td>
             <td>$4,056</td>
-            <td>5d</td>
+            <td>6d</td>
             <td class="neg">-23.7%</td>
         </tr></tbody>
         </table>
@@ -246,6 +237,14 @@ canvas { width: 100% !important; height: 260px !important; }
                 <th>Ticker</th><th>Date</th><th>Price</th><th>Shares</th><th>P&L</th><th>Reason</th>
             </tr></thead>
             <tbody>
+        <tr>
+            <td><span class="ticker">MNST</span></td>
+            <td>2026-07-22</td>
+            <td>$94.46</td>
+            <td>253</td>
+            <td class="pos">$+822</td>
+            <td><span class="reason-badge">stop loss</span></td>
+        </tr>
         <tr>
             <td><span class="ticker">KLAC</span></td>
             <td>2026-07-21</td>
@@ -397,14 +396,6 @@ canvas { width: 100% !important; height: 260px !important; }
             <td>27</td>
             <td class="pos">$+2,327</td>
             <td><span class="reason-badge">stop loss</span></td>
-        </tr>
-        <tr>
-            <td><span class="ticker">LRCX</span></td>
-            <td>2026-06-08</td>
-            <td>$303.28</td>
-            <td>36</td>
-            <td class="pos">$+603</td>
-            <td><span class="reason-badge">stop loss</span></td>
         </tr></tbody>
         </table>
     </div>
@@ -413,13 +404,13 @@ canvas { width: 100% !important; height: 260px !important; }
 <div style="height:60px"></div>
 
 <div class="status-bar">
-    <span>Last scan: <span class="live">2026-07-21T22:27:32.192729</span></span>
+    <span>Last scan: <span class="live">2026-07-22T22:33:45.385606</span></span>
     <span>Strategy: MACD(12,26,9) + 200SMA + RS | ATR Stop 2.5x | Max 8 positions | 1.2% risk/trade</span>
     <span>Auto-refreshes with each scan</span>
 </div>
 
 <script>
-const equityData = [{"date": "2026-04-10", "value": 99930.44}, {"date": "2026-04-10", "value": 99930.44}, {"date": "2026-04-10", "value": 99930.44}, {"date": "2026-04-10", "value": 99930.44}, {"date": "2026-04-13", "value": 99382.84}, {"date": "2026-04-14", "value": 98977.95}, {"date": "2026-04-15", "value": 99249.61}, {"date": "2026-04-16", "value": 98722.95}, {"date": "2026-04-17", "value": 99085.77}, {"date": "2026-04-20", "value": 99467.91}, {"date": "2026-04-21", "value": 100154.25}, {"date": "2026-04-22", "value": 100484.04}, {"date": "2026-04-23", "value": 101652.2}, {"date": "2026-04-24", "value": 101961.22}, {"date": "2026-04-27", "value": 102944.45}, {"date": "2026-04-28", "value": 101964.75}, {"date": "2026-04-29", "value": 101307.71}, {"date": "2026-04-30", "value": 102105.93}, {"date": "2026-05-01", "value": 103349.13}, {"date": "2026-05-04", "value": 103560.0}, {"date": "2026-05-05", "value": 103408.01}, {"date": "2026-05-06", "value": 105211.73}, {"date": "2026-05-07", "value": 103593.53}, {"date": "2026-05-08", "value": 101220.94}, {"date": "2026-05-11", "value": 102664.83}, {"date": "2026-05-12", "value": 103950.86}, {"date": "2026-05-13", "value": 102703.71}, {"date": "2026-05-14", "value": 104615.82}, {"date": "2026-05-15", "value": 105355.49}, {"date": "2026-05-18", "value": 103010.65}, {"date": "2026-05-19", "value": 101462.99}, {"date": "2026-05-20", "value": 100864.02}, {"date": "2026-05-21", "value": 102444.28}, {"date": "2026-05-22", "value": 103858.27}, {"date": "2026-05-25", "value": 104597.17}, {"date": "2026-05-26", "value": 104597.17}, {"date": "2026-05-27", "value": 107132.46}, {"date": "2026-05-28", "value": 104322.79}, {"date": "2026-05-29", "value": 105064.55}, {"date": "2026-06-01", "value": 105035.97}, {"date": "2026-06-02", "value": 107754.93}, {"date": "2026-06-03", "value": 113384.39}, {"date": "2026-06-04", "value": 115696.7}, {"date": "2026-06-05", "value": 113550.94}, {"date": "2026-06-08", "value": 104946.18}, {"date": "2026-06-09", "value": 105750.39}, {"date": "2026-06-10", "value": 106533.62}, {"date": "2026-06-11", "value": 95676.19}, {"date": "2026-06-12", "value": 97036.52}, {"date": "2026-06-15", "value": 98277.79}, {"date": "2026-06-16", "value": 99933.79}, {"date": "2026-06-17", "value": 99084.99}, {"date": "2026-06-18", "value": 98094.65}, {"date": "2026-06-19", "value": 99561.33}, {"date": "2026-06-22", "value": 99561.33}, {"date": "2026-06-23", "value": 99127.98}, {"date": "2026-06-24", "value": 95170.89}, {"date": "2026-06-25", "value": 95459.48}, {"date": "2026-06-26", "value": 97768.82}, {"date": "2026-06-29", "value": 94105.36}, {"date": "2026-06-30", "value": 95657.71}, {"date": "2026-07-01", "value": 97157.21}, {"date": "2026-07-02", "value": 96280.16}, {"date": "2026-07-03", "value": 95197.68}, {"date": "2026-07-06", "value": 95197.68}, {"date": "2026-07-07", "value": 95794.62}, {"date": "2026-07-08", "value": 93698.02}, {"date": "2026-07-09", "value": 92066.93}, {"date": "2026-07-10", "value": 92722.93}, {"date": "2026-07-13", "value": 92794.45}, {"date": "2026-07-14", "value": 90846.3}, {"date": "2026-07-15", "value": 91587.1}, {"date": "2026-07-16", "value": 90407.28}, {"date": "2026-07-17", "value": 89634.49}, {"date": "2026-07-20", "value": 88024.74}, {"date": "2026-07-21", "value": 87530.25}];
+const equityData = [{"date": "2026-04-10", "value": 99930.44}, {"date": "2026-04-10", "value": 99930.44}, {"date": "2026-04-10", "value": 99930.44}, {"date": "2026-04-10", "value": 99930.44}, {"date": "2026-04-13", "value": 99382.84}, {"date": "2026-04-14", "value": 98977.95}, {"date": "2026-04-15", "value": 99249.61}, {"date": "2026-04-16", "value": 98722.95}, {"date": "2026-04-17", "value": 99085.77}, {"date": "2026-04-20", "value": 99467.91}, {"date": "2026-04-21", "value": 100154.25}, {"date": "2026-04-22", "value": 100484.04}, {"date": "2026-04-23", "value": 101652.2}, {"date": "2026-04-24", "value": 101961.22}, {"date": "2026-04-27", "value": 102944.45}, {"date": "2026-04-28", "value": 101964.75}, {"date": "2026-04-29", "value": 101307.71}, {"date": "2026-04-30", "value": 102105.93}, {"date": "2026-05-01", "value": 103349.13}, {"date": "2026-05-04", "value": 103560.0}, {"date": "2026-05-05", "value": 103408.01}, {"date": "2026-05-06", "value": 105211.73}, {"date": "2026-05-07", "value": 103593.53}, {"date": "2026-05-08", "value": 101220.94}, {"date": "2026-05-11", "value": 102664.83}, {"date": "2026-05-12", "value": 103950.86}, {"date": "2026-05-13", "value": 102703.71}, {"date": "2026-05-14", "value": 104615.82}, {"date": "2026-05-15", "value": 105355.49}, {"date": "2026-05-18", "value": 103010.65}, {"date": "2026-05-19", "value": 101462.99}, {"date": "2026-05-20", "value": 100864.02}, {"date": "2026-05-21", "value": 102444.28}, {"date": "2026-05-22", "value": 103858.27}, {"date": "2026-05-25", "value": 104597.17}, {"date": "2026-05-26", "value": 104597.17}, {"date": "2026-05-27", "value": 107132.46}, {"date": "2026-05-28", "value": 104322.79}, {"date": "2026-05-29", "value": 105064.55}, {"date": "2026-06-01", "value": 105035.97}, {"date": "2026-06-02", "value": 107754.93}, {"date": "2026-06-03", "value": 113384.39}, {"date": "2026-06-04", "value": 115696.7}, {"date": "2026-06-05", "value": 113550.94}, {"date": "2026-06-08", "value": 104946.18}, {"date": "2026-06-09", "value": 105750.39}, {"date": "2026-06-10", "value": 106533.62}, {"date": "2026-06-11", "value": 95676.19}, {"date": "2026-06-12", "value": 97036.52}, {"date": "2026-06-15", "value": 98277.79}, {"date": "2026-06-16", "value": 99933.79}, {"date": "2026-06-17", "value": 99084.99}, {"date": "2026-06-18", "value": 98094.65}, {"date": "2026-06-19", "value": 99561.33}, {"date": "2026-06-22", "value": 99561.33}, {"date": "2026-06-23", "value": 99127.98}, {"date": "2026-06-24", "value": 95170.89}, {"date": "2026-06-25", "value": 95459.48}, {"date": "2026-06-26", "value": 97768.82}, {"date": "2026-06-29", "value": 94105.36}, {"date": "2026-06-30", "value": 95657.71}, {"date": "2026-07-01", "value": 97157.21}, {"date": "2026-07-02", "value": 96280.16}, {"date": "2026-07-03", "value": 95197.68}, {"date": "2026-07-06", "value": 95197.68}, {"date": "2026-07-07", "value": 95794.62}, {"date": "2026-07-08", "value": 93698.02}, {"date": "2026-07-09", "value": 92066.93}, {"date": "2026-07-10", "value": 92722.93}, {"date": "2026-07-13", "value": 92794.45}, {"date": "2026-07-14", "value": 90846.3}, {"date": "2026-07-15", "value": 91587.1}, {"date": "2026-07-16", "value": 90407.28}, {"date": "2026-07-17", "value": 89634.49}, {"date": "2026-07-20", "value": 88024.74}, {"date": "2026-07-21", "value": 87530.25}, {"date": "2026-07-22", "value": 88439.59}];
 
 function drawChart() {
     const canvas = document.getElementById('equityChart');
